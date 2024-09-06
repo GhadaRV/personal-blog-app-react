@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login.js';
 import SignUp from './pages/SignUp';
-import Blog from './pages/Blog';
+import BlogList from './pages/BlogList';
+import BlogPost from './pages/BlogPost';
+import PostForm from './pages/PostForm';
+
 
 
 function App() {
@@ -14,7 +17,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/bloglist" element={<BlogList />} />
+          <Route path="/posts/:id" element={<BlogPost />} />
+          <Route path="/posts/create" element={<PostForm mode="create" />} />
+          <Route path="/posts/edit/:id" element={<PostForm mode="edit" />} />
         </Routes>
       </div>
     </Router>
