@@ -10,7 +10,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('http://localhost:3001/api/auth/signup', {
+        const response = await fetch('https://personal-blog-app-0b895edd9dd6.herokuapp.com/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
