@@ -6,12 +6,14 @@ import SignUp from './pages/SignUp';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import PostForm from './pages/PostForm';
+import Navbar from './components/Navbar'; // Adjust the path if needed
 
 
 
 function App() {
   return (
     <Router>
+      <Navbar /> {/* Add Navbar here */}
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
