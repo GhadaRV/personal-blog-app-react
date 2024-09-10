@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+const apiUrl = process.env.PROD_ENDPOINT;
 const PostForm = ({ mode }) => {
     const { id } = useParams();
     const [title, setTitle] = useState('');
@@ -9,7 +10,7 @@ const PostForm = ({ mode }) => {
 
     useEffect(() => {
         if (mode === 'edit' && id) {
-            fetch(`http://localhost:3001/api/posts/${id}`)
+            fetch(`${apiUrl}/api/posts/${id}`)
                 .then((res) => res.json())
                 .then((data) => {
                     setTitle(data.title);
@@ -24,7 +25,7 @@ const PostForm = ({ mode }) => {
         const payload = { title, content };
         const token = localStorage.getItem('token');
         const response = mode === 'edit'
-            ? await fetch(`http://localhost:3001/api/posts/${id}`, {
+            ? await fetch(`${apiUrl}/api/posts/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ const PostForm = ({ mode }) => {
                 },
                 body: JSON.stringify(payload),
             })
-            : await fetch('http://localhost:3001/api/posts', {
+            : await fetch(`${apiUrl}/api/posts`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

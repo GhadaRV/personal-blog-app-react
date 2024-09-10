@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
+const apiUrl = process.env.PROD_ENDPOINT;
 const BlogList = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/posts')
+        fetch(`${apiUrl}/api/posts`)
             .then((res) => res.json())
             .then((data) => setPosts(data))
             .catch((error) => console.error('Error fetching posts:', error));

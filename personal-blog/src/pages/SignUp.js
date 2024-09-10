@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const apiUrl = process.env.PROD_ENDPOINT;
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -10,7 +11,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('https://personal-blog-app-0b895edd9dd6.herokuapp.com/api/auth/signup', {
+        const response = await fetch(`${apiUrl}/api/auth/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

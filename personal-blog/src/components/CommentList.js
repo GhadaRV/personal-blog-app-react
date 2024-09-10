@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Comment from './Comment';
 
+
+const apiUrl = process.env.PROD_ENDPOINT;
 const CommentList = ({ postId }) => {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/api/comments/${postId}`);
+                const response = await fetch(`${apiUrl}/api/comments/${postId}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

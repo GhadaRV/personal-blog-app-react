@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
+
+const apiUrl = process.env.PROD_ENDPOINT;
 const CommentForm = ({ postId, refreshComments }) => {
     const [content, setContent] = useState('');
     const token = localStorage.getItem('token');
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:3001/api/comments', {
+            const response = await fetch(`${apiUrl}/api/comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

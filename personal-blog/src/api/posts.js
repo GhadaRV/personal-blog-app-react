@@ -1,7 +1,8 @@
 const token = localStorage.getItem('token');
 
+const apiUrl = process.env.PROD_ENDPOINT;
 const fetchPosts = async () => {
-    const response = await fetch('http://localhost:3001/api/posts', {
+    const response = await fetch(`${apiUrl}/api/posts`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

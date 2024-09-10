@@ -4,6 +4,7 @@ import CommentList from '../components/CommentList';
 import ReactMarkdown from 'react-markdown';
 import { useParams, Link } from 'react-router-dom';
 
+const apiUrl = process.env.PROD_ENDPOINT;
 const BlogPost = () => {
     const { id: postId } = useParams();
     const [post, setPost] = useState(null);
@@ -12,7 +13,7 @@ const BlogPost = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/api/posts/${postId}`);
+                const response = await fetch(`${apiUrl}/api/posts/${postId}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -25,7 +26,7 @@ const BlogPost = () => {
 
         const fetchComments = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/api/comments/${postId}`);
+                const response = await fetch(`${apiUrl}/api/comments/${postId}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -47,7 +48,7 @@ const BlogPost = () => {
     };*/
     const refreshComments = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/api/comments/${postId}`);
+            const response = await fetch(`${apiUrl}/api/comments/${postId}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
