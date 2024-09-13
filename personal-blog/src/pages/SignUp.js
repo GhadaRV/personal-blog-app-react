@@ -24,6 +24,7 @@ const SignUp = () => {
             navigate('/login'); // Redirect to login page
         } else {
             alert('Error signing up');
+            console.log("endpoint", `${apiUrl}`)
         }
     };
 
