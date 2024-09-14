@@ -4,7 +4,7 @@ import CommentList from '../components/CommentList';
 import ReactMarkdown from 'react-markdown';
 import { useParams, Link } from 'react-router-dom';
 
-const apiUrl = process.env.PROD_ENDPOINT;
+const apiUrl = process.env.REACT_APP_API_URL;
 const BlogPost = () => {
     const { id: postId } = useParams();
     const [post, setPost] = useState(null);

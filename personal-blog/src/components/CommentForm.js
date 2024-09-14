@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const apiUrl = process.env.PROD_ENDPOINT;
+const apiUrl = process.env.REACT_APP_API_URL;
 const CommentForm = ({ postId, refreshComments }) => {
     const [content, setContent] = useState('');
     const token = localStorage.getItem('token');

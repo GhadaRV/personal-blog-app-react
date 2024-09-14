@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const apiUrl = process.env.PROD_ENDPOINT;
+const apiUrl = process.env.REACT_APP_API_URL;
 const PostForm = ({ mode }) => {
     const { id } = useParams();
     const [title, setTitle] = useState('');

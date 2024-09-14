@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Comment from './Comment';
 
 
-const apiUrl = process.env.PROD_ENDPOINT;
+const apiUrl = process.env.REACT_APP_API_URL;
 const CommentList = ({ postId }) => {
     const [comments, setComments] = useState([]);
 

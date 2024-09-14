@@ -1,6 +1,6 @@
 const token = localStorage.getItem('token');
 
-const apiUrl = process.env.PROD_ENDPOINT;
+const apiUrl = process.env.REACT_APP_API_URL;
 const fetchPosts = async () => {
     const response = await fetch(`${apiUrl}/api/posts`, {
         method: 'GET',
