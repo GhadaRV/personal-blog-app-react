@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const apiUrl = process.env.PROD_ENDPOINT;
+const apiUrl = process.env.REACT_APP_API_URL;
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -24,7 +24,8 @@ const SignUp = () => {
             navigate('/login'); // Redirect to login page
         } else {
             alert('Error signing up');
-            console.log("endpoint", `${apiUrl}`)
+            console.log("endpoint is :", `${apiUrl}`)
+            console.log("error is :", `${apiUrl}`)
         }
     };
 
