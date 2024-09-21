@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fragment } from "react";
-import { Menu, Transition, Disclosure } from "@headlessui/react";
+import { Menu, Transition, Disclosure, DisclosurePanel, DisclosureButton } from "@headlessui/react";
 import Container from "./container";
 import cx from 'clsx';
 import { Link, useNavigate } from 'react-router-dom';
@@ -143,7 +143,7 @@ const Navbar = (props) => {
 
 
                                     </Link>
-                                    <Disclosure.Button
+                                    <DisclosureButton
                                         aria-label="Toggle Menu"
                                         className="ml-auto rounded-md px-2 py-1 text-gray-500 focus:text-blue-500 focus:outline-none dark:text-gray-300 md:hidden ">
                                         <svg
@@ -164,7 +164,7 @@ const Navbar = (props) => {
                                                 />
                                             )}
                                         </svg>
-                                    </Disclosure.Button>
+                                    </DisclosureButton>
                                 </div>
 
                                 <div className="order-2 hidden w-full flex-col items-center justify-start md:order-none md:flex md:w-auto md:flex-1 md:flex-row">
@@ -182,7 +182,7 @@ const Navbar = (props) => {
                                                         <button
                                                             onClick={() => {
                                                                 localStorage.removeItem("token");
-                                                                window.location.reload(); // Refresh page or navigate
+                                                                window.location.reload();
                                                             }}
                                                             className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
                                                         >
@@ -206,7 +206,7 @@ const Navbar = (props) => {
                                 </div>
 
                             </div>
-                            <Disclosure.Panel>
+                            <DisclosurePanel>
                                 <div className="order-2 -ml-4 mt-4 flex w-full flex-col items-center justify-start md:hidden">
                                     {mobilemenu.map((item, index) => (
                                         <Fragment key={`${item.label}${index}`}>
@@ -218,19 +218,33 @@ const Navbar = (props) => {
                                                     mobile={true}
                                                 />
                                             ) : (
-                                                <Link
-                                                    href={item.href}
-                                                    key={`${item.label}${index}`}
-                                                    className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-                                                    target={item.external ? "_blank" : ""}
-                                                    rel={item.external ? "noopener" : ""}>
-                                                    {item.label}
-                                                </Link>
+                                                <>
+                                                    {item.label === "Sign Up" && token ? null : item.label === "Login" && token ? (
+                                                        <a
+                                                            onClick={() => {
+                                                                localStorage.removeItem("token");
+                                                                window.location.reload();
+                                                            }}
+                                                            className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+                                                        >
+                                                            <span>Logout</span>
+                                                        </a>
+                                                    ) : (
+                                                        <Link
+                                                            to={item.href}
+                                                            key={`${item.label}${index}`}
+                                                            className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+                                                            target={item.external ? "_blank" : ""}
+                                                            rel={item.external ? "noopener" : ""}>
+                                                            {item.label}
+                                                        </Link>
+                                                    )}
+                                                </>
                                             )}
                                         </Fragment>
                                     ))}
                                 </div>
-                            </Disclosure.Panel>
+                            </DisclosurePanel>
                         </>
                     )}
                 </Disclosure>
